@@ -49,6 +49,7 @@ class Player(Sprite):
         self.__screen_width = screen_width
         self.__screen_height = screen_height
         self.__start_time = None
+        self.game_stop = False
 
     def set_speed(self, speed):
         self.__speed = speed
@@ -81,8 +82,10 @@ class Player(Sprite):
 
     def start_timer(self):
         self.__start_time = time.time()
+        self.game_stop = True
 
     def stop_timer(self):
+        self.game_stop = True
         end_time = time.time()
         return end_time - self.__start_time
 
@@ -113,6 +116,8 @@ class Game:
         self.player1 = Player('player', 100, 600, 0.35, 0, 100, 0.5, self.screen_width, self.screen_height)
         self.player2 = Player('enemy', 100, 400, 0.35, 0, 100, 0.5, self.screen_width, self.screen_height)
         self.music_muted = False
+        self.game_stop = False
+        self.time_taken = 0
         self.engine_sound = pygame.mixer.Sound('audio/fortuner.wav')
 
         start_button_image = pygame.image.load('images/start.png')
@@ -128,7 +133,7 @@ class Game:
         self.back_button = Button(50, 130, back_button_image, 0.2)
 
         home_button_image = pygame.image.load('images/back.png')
-        self.home_button = Button(540, 520, home_button_image, 0.3)
+        self.home_button = Button(520, 520, home_button_image, 0.3)
 
         self.countdown = 3  
         self.show_rules = False
@@ -167,8 +172,10 @@ class Game:
 
     def check_winner(self):
         if self.player1.get_distance_traveled() >= 2000:
+            self.game_stop = True
             return "Player 1 WIN!"
         elif self.player2.get_distance_traveled() >= 2000:
+            self.game_stop = True
             return "Player 2 WIN!"
         return None
 
@@ -232,18 +239,19 @@ class Game:
                                     pygame.mixer.music.set_volume(0)  
                                 elif event.key == pygame.K_z:
                                     pygame.mixer.music.set_volume(0.5)          
-
-                        self.player1.move()
-                        self.player2.move()
+                        if not self.game_stop:
+                            self.player1.move()
+                            self.player2.move()
 
                         if self.player1.rect.right >= self.screen_width + 270:
                             self.player1.rect.left = -self.player1.rect.width
                         if self.player2.rect.right >= self.screen_width + 270:
                             self.player2.rect.left = -self.player2.rect.width
 
-                        self.background_img_x -= self.player1.get_speed()
-                        if self.background_img_x <= -self.screen_width:
-                            self.background_img_x = 0
+                        if not self.game_stop:
+                            self.background_img_x -= self.player1.get_speed()
+                            if self.background_img_x <= -self.screen_width:
+                                self.background_img_x = 0
 
                         self.draw_bg()
                         self.player1.draw(self.screen)
@@ -262,14 +270,13 @@ class Game:
                             self.home_button.draw(self.screen)
 
                             if winner == "Player 1":
-                                time_taken = self.player1.stop_timer()
+                                self.time_taken = self.player1.stop_timer()
                             else:
-                                time_taken = self.player2.stop_timer()
-                            time_text = f"Time taken: {time_taken:.2f} seconds"
-                            text = font.render(time_text, True, (0, 0, 0))
-                            self.screen.blit(text, (self.screen_width // 2 - text.get_width() // 2, self.screen_height // 2 + text.get_height() // 2))
+                                self.time_taken = self.player2.stop_timer()
+                            self.time_text = f"Time taken: {self.time_taken:.2f} seconds"
 
-                            self.start_time = None
+                            text = font.render(self.time_text, True, (0, 0, 0))
+                            self.screen.blit(text, (self.screen_width // 2 - text.get_width() // 2, self.screen_height // 2 + text.get_height() // 2))
                             
                             self.engine_sound.stop()
                             pygame.display.update()
