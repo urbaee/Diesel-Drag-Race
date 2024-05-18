@@ -1,1 +1,1 @@
-rules_text
+game_stop
