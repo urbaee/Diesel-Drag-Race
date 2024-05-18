@@ -69,6 +69,13 @@ class Player(Sprite):
     def get_acceleration_rate(self):
         return self.__acceleration_rate       
 
+    def reset(self):
+        self.rect.center = self.rect.center
+        self.__speed = 0
+        self.__distance_traveled = 0
+        self.__start_time = False
+        self.__start_time = 0
+
     def move(self):
         self.rect.x += self.__speed
         self.__distance_traveled += abs(self.__speed) / self.__screen_width * self.__screen_height
@@ -82,10 +89,8 @@ class Player(Sprite):
 
     def start_timer(self):
         self.__start_time = time.time()
-        self.game_stop = True
 
     def stop_timer(self):
-        self.game_stop = True
         end_time = time.time()
         return end_time - self.__start_time
 
@@ -118,6 +123,7 @@ class Game:
         self.music_muted = False
         self.game_stop = False
         self.time_taken = 0
+        self.win = False
         self.engine_sound = pygame.mixer.Sound('audio/fortuner.wav')
 
         start_button_image = pygame.image.load('images/start.png')
@@ -186,6 +192,16 @@ class Game:
             pygame.mixer.music.set_volume(0) 
         self.music_muted = not self.music_muted 
 
+    def reset_game(self):
+        self.start_game = False
+        self.countdown = 3 
+        self.player1.reset()
+        self.player2.reset()
+        self.win = False
+        self.time_taken = 0
+        self.time_text = ""
+        self.background_img_x = 0
+
     def run(self):
         try:
             start_game = False
@@ -198,6 +214,7 @@ class Game:
                         run = False
                     elif event.type == pygame.MOUSEBUTTONDOWN:
                         if self.start_button.rect.collidepoint(pygame.mouse.get_pos()):
+                            self.reset_game()
                             start_game = True
                         elif self.rules_button.rect.collidepoint(pygame.mouse.get_pos()):
                             self.show_rules = not self.show_rules
@@ -238,7 +255,8 @@ class Game:
                                 elif event.key == pygame.K_x:
                                     pygame.mixer.music.set_volume(0)  
                                 elif event.key == pygame.K_z:
-                                    pygame.mixer.music.set_volume(0.5)          
+                                    pygame.mixer.music.set_volume(0.5)   
+
                         if not self.game_stop:
                             self.player1.move()
                             self.player2.move()
@@ -270,10 +288,15 @@ class Game:
                             self.home_button.draw(self.screen)
 
                             if winner == "Player 1":
+                                if not self.win:
+                                    self.time_taken = self.player2.stop_timer()
+                                    self.win = True
                                 self.time_taken = self.player1.stop_timer()
                             else:
-                                self.time_taken = self.player2.stop_timer()
-                            self.time_text = f"Time taken: {self.time_taken:.2f} seconds"
+                                if not self.win:
+                                    self.time_taken = self.player2.stop_timer()
+                                    self.win = True
+                                self.time_text = f"Time taken: {self.time_taken:.2f} seconds"
 
                             text = font.render(self.time_text, True, (0, 0, 0))
                             self.screen.blit(text, (self.screen_width // 2 - text.get_width() // 2, self.screen_height // 2 + text.get_height() // 2))
