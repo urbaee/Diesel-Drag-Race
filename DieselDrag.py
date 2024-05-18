@@ -37,6 +37,8 @@ class Sprite(GameObject):
 class Player(Sprite):
     def __init__(self, char_type, x, y, scale, initial_speed, max_speed, acceleration_rate, screen_width, screen_height):
         super().__init__()
+        self.x = x
+        self.y = y
         self.__char_type = char_type
         self.__speed = initial_speed
         self.__max_speed = max_speed
@@ -70,7 +72,7 @@ class Player(Sprite):
         return self.__acceleration_rate       
 
     def reset(self):
-        self.rect.center = self.rect.center
+        self.rect.center = (self.x, self.y)
         self.__speed = 0
         self.__distance_traveled = 0
         self.__start_time = False
@@ -206,7 +208,8 @@ class Game:
         try:
             start_game = False
             run = True
-
+            self.game_stop = False
+            
             while run:
                 self.clock.tick(self.FPS)
                 for event in pygame.event.get():
@@ -221,7 +224,10 @@ class Game:
                         elif self.music_button.rect.collidepoint(pygame.mouse.get_pos()):
                             self.toggle_music()   
                         elif self.home_button.rect.collidepoint(pygame.mouse.get_pos()):
-                            self.run()       
+                            self.run()  
+                    elif event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_f:
+                            pygame.display.toggle_fullscreen()             
 
                 if start_game:
                     if self.countdown > 0:
@@ -259,7 +265,7 @@ class Game:
 
                         if not self.game_stop:
                             self.player1.move()
-                            self.player2.move()
+                            self.player2.move()        
 
                         if self.player1.rect.right >= self.screen_width + 270:
                             self.player1.rect.left = -self.player1.rect.width
