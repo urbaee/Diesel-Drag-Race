@@ -138,10 +138,13 @@ class Game:
         self.music_button = Button(50, 50, music_button_image, 0.2)
 
         back_button_image = pygame.image.load('images/back.png')
-        self.back_button = Button(50, 130, back_button_image, 0.2)
+        self.back_button = Button(50, 600, back_button_image, 0.2)
 
         home_button_image = pygame.image.load('images/back.png')
         self.home_button = Button(520, 520, home_button_image, 0.3)
+
+        fullscreen_button_image = pygame.image.load('images/fullscreen.png')
+        self.fullscreen_button = Button(50, 120, fullscreen_button_image, 0.2)
 
         self.countdown = 3  
         self.show_rules = False
@@ -225,8 +228,7 @@ class Game:
                             self.toggle_music()   
                         elif self.home_button.rect.collidepoint(pygame.mouse.get_pos()):
                             self.run()  
-                    elif event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_f:
+                        elif self.fullscreen_button.rect.collidepoint(pygame.mouse.get_pos()):
                             pygame.display.toggle_fullscreen()             
 
                 if start_game:
@@ -317,6 +319,7 @@ class Game:
                     self.start_button.draw(self.screen)
                     self.rules_button.draw(self.screen)
                     self.music_button.draw(self.screen)
+                    self.fullscreen_button.draw(self.screen)
 
                     if self.show_rules:
                         self.screen.fill((0,0,0))
