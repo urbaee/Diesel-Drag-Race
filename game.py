@@ -1,104 +1,10 @@
+# game.py
+
 import pygame
-from abc import ABC, abstractmethod
+from player import Player
 from button import Button
+from car_config import CAR_CONFIGS
 import time
-
-class GameObject(ABC):
-    @abstractmethod
-    def update(self):
-        pass
-
-    @abstractmethod
-    def move(self):
-        pass
-
-    @abstractmethod
-    def accelerate(self):
-        pass
-
-    @abstractmethod
-    def start_timer(self):
-        pass
-
-    @abstractmethod
-    def stop_timer(self):
-        pass
-
-class Sprite(GameObject):
-    def __init__(self):
-        super().__init__()
-        self.image = None
-        self.rect = None
-
-    def draw(self, screen):
-        if self.image and self.rect:
-            screen.blit(self.image, self.rect)
-
-class Player(Sprite):
-    def __init__(self, char_type, x, y, scale, initial_speed, max_speed, acceleration_rate, screen_width, screen_height):
-        super().__init__()
-        self.x = x
-        self.y = y
-        self.__char_type = char_type
-        self.__speed = initial_speed
-        self.__max_speed = max_speed
-        self.__acceleration_rate = acceleration_rate
-        img = pygame.image.load(f'img/{self.__char_type}/Idle/0.png')
-        self.image = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
-        self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
-        self.__distance_traveled = 0
-        self.__screen_width = screen_width
-        self.__screen_height = screen_height
-        self.__start_time = None
-        self.game_stop = False
-
-    def set_speed(self, speed):
-        self.__speed = speed
-
-    def get_speed(self):
-        return self.__speed
-    
-    def set_max_speed(self, max_speed):
-        self.__max_speed = max_speed
-
-    def get_max_speed(self):
-        return self.__max_speed
-
-    def set_acceleration_rate(self, acceleration_rate):
-        self.__acceleration_rate = acceleration_rate
-
-    def get_acceleration_rate(self):
-        return self.__acceleration_rate       
-
-    def reset(self):
-        self.rect.center = (self.x, self.y)
-        self.__speed = 0
-        self.__distance_traveled = 0
-        self.__start_time = False
-        self.__start_time = 0
-
-    def move(self):
-        self.rect.x += self.__speed
-        self.__distance_traveled += abs(self.__speed) / self.__screen_width * self.__screen_height
-
-    def accelerate(self):
-        if self.__speed < self.__max_speed:
-            self.__speed += self.__acceleration_rate
-
-    def get_distance_traveled(self):
-        return self.__distance_traveled
-
-    def start_timer(self):
-        self.__start_time = time.time()
-
-    def stop_timer(self):
-        end_time = time.time()
-        return end_time - self.__start_time
-
-    def update(self):
-        self.move()
-        self.accelerate()
 
 class Game:
     def __init__(self, screen_width=1280, screen_height=720):
@@ -117,11 +23,16 @@ class Game:
         self.font_size = 24
         self.background_img = pygame.image.load('img/backgroundgame2.jpg').convert()
         self.background_img2 = pygame.image.load('images/bgfortuner3.png').convert()
+        self.background_img3 = pygame.image.load('img/backgroundgame3.jpg').convert()
         self.background_img = pygame.transform.scale(self.background_img, (self.screen_width, self.screen_height))
+        self.background_img3 = pygame.transform.scale(self.background_img3, (self.screen_width, self.screen_height))
         self.background_img_x = 0
         self.PIXELS_PER_METER = 100
-        self.player1 = Player('player', 100, 600, 0.35, 0, 100, 0.5, self.screen_width, self.screen_height)
-        self.player2 = Player('enemy', 100, 400, 0.35, 0, 100, 0.5, self.screen_width, self.screen_height)
+
+        self.selected_car = "car1"
+        self.car_buttons = []
+        self.car_selection = False
+
         self.music_muted = False
         self.game_stop = False
         self.time_taken = 0
@@ -146,6 +57,12 @@ class Game:
         fullscreen_button_image = pygame.image.load('images/fullscreen.png')
         self.fullscreen_button = Button(50, 120, fullscreen_button_image, 0.2)
 
+        selection_car_image = pygame.image.load('images/back.png')
+        self.selection_button = Button(50, 250, selection_car_image, 0.2)
+
+        back2_button_image = pygame.image.load('images/back.png')
+        self.back2_button = Button(520, 550, back2_button_image, 0.2)
+
         self.countdown = 3  
         self.show_rules = False
         self.rules_text = [
@@ -155,6 +72,9 @@ class Game:
             "3. Jika salah satu pemain mencapai jarak 2000 meter, pemain tersebut menang.",
             "4. Tekan tombol 'ESC' untuk keluar dari game."
         ]
+
+        self.player1 = None  # Initialize player1 and player2 to None
+        self.player2 = None
 
     def draw_bg(self):
         self.screen.fill(self.bg_color)
@@ -199,7 +119,9 @@ class Game:
 
     def reset_game(self):
         self.start_game = False
-        self.countdown = 3 
+        self.countdown = 3
+        self.player1 = Player(CAR_CONFIGS[self.selected_car], 100, 600, self.screen_width, self.screen_height)
+        self.player2 = Player(CAR_CONFIGS["car2"], 100, 400, self.screen_width, self.screen_height)
         self.player1.reset()
         self.player2.reset()
         self.win = False
@@ -212,7 +134,8 @@ class Game:
             start_game = False
             run = True
             self.game_stop = False
-            
+            sound_stop = False
+
             while run:
                 self.clock.tick(self.FPS)
                 for event in pygame.event.get():
@@ -225,12 +148,14 @@ class Game:
                         elif self.rules_button.rect.collidepoint(pygame.mouse.get_pos()):
                             self.show_rules = not self.show_rules
                         elif self.music_button.rect.collidepoint(pygame.mouse.get_pos()):
-                            self.toggle_music()   
+                            self.toggle_music()
                         elif self.home_button.rect.collidepoint(pygame.mouse.get_pos()):
-                            self.run()  
+                            self.run()
                         elif self.fullscreen_button.rect.collidepoint(pygame.mouse.get_pos()):
-                            pygame.display.toggle_fullscreen()             
-
+                            pygame.display.toggle_fullscreen()
+                        elif self.selection_button.rect.collidepoint(pygame.mouse.get_pos()):
+                            self.car_selection = not self.car_selection                            
+    
                 if start_game:
                     if self.countdown > 0:
                         self.screen.fill((0, 0, 0))  
@@ -242,13 +167,6 @@ class Game:
                         pygame.time.wait(1000)  
                         self.countdown -= 1
                     else:
-                        if not self.player1.get_distance_traveled() and not self.player2.get_distance_traveled():        
-                            self.player1.start_timer()
-                            self.player2.start_timer()  
-                        elif self.player1.get_speed() > 0 or self.player2.get_speed():
-                            self.engine_sound.play()
-                            self.engine_sound.set_volume(0.3)
-
                         self.clock.tick(self.FPS)
                         for event in pygame.event.get():
                             if event.type == pygame.QUIT:
@@ -258,12 +176,24 @@ class Game:
                                     run = False
                                 elif event.key == pygame.K_UP:
                                     self.player1.accelerate()
+                                    if not sound_stop:
+                                        self.engine_sound.play()
+                                        self.engine_sound.set_volume(0.3)
+                                        sound_stop = True
                                 elif event.key == pygame.K_w:
                                     self.player2.accelerate()
+                                    if not sound_stop:
+                                        self.engine_sound.play()
+                                        self.engine_sound.set_volume(0.3)
+                                        sound_stop = True
                                 elif event.key == pygame.K_x:
-                                    pygame.mixer.music.set_volume(0)  
+                                    pygame.mixer.music.set_volume(0)
                                 elif event.key == pygame.K_z:
-                                    pygame.mixer.music.set_volume(0.5)   
+                                    pygame.mixer.music.set_volume(0.5)
+
+                        if not self.player1.get_distance_traveled() and not self.player2.get_distance_traveled():        
+                            self.player1.start_timer()
+                            self.player2.start_timer()  
 
                         if not self.game_stop:
                             self.player1.move()
@@ -320,6 +250,27 @@ class Game:
                     self.rules_button.draw(self.screen)
                     self.music_button.draw(self.screen)
                     self.fullscreen_button.draw(self.screen)
+                    self.selection_button.draw(self.screen)
+
+                    if self.car_selection:
+                        self.screen.blit(self.background_img3, (0,0))
+                        self.back2_button.draw(self.screen)
+                        for event in pygame.event.get():
+                            if event.type == pygame.QUIT:
+                                run = False
+                            elif event.type == pygame.MOUSEBUTTONDOWN:
+                                if self.back2_button.rect.collidepoint(pygame.mouse.get_pos()):
+                                     self.car_selection = False
+                        for i, (car_name, config) in enumerate(CAR_CONFIGS.items()):
+                            car_button_image = pygame.image.load(config['image_path'])
+                            car_button_image = pygame.transform.scale(car_button_image, (100, 100))
+                            button = Button(300 + i * 320, 200, car_button_image, 2)
+                            self.car_buttons.append((button, car_name))
+                        for button, _ in self.car_buttons:
+                            button.draw(self.screen)
+                        for button, car_name in self.car_buttons:
+                            if button.rect.collidepoint(pygame.mouse.get_pos()):
+                                self.selected_car = car_name
 
                     if self.show_rules:
                         self.screen.fill((0,0,0))
@@ -342,7 +293,3 @@ class Game:
 
         except Exception as e:
             print("An error occurred:", str(e))
-
-if __name__ == "__main__":
-    game = Game()
-    game.run()
