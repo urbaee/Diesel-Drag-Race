@@ -29,7 +29,8 @@ class Game:
         self.background_img_x = 0
         self.PIXELS_PER_METER = 100
 
-        self.selected_car = "car1"
+        self.selected_car1 = "car1"
+        self.selected_car2 = "car2"
         self.car_buttons = []
         self.car_selection = False
 
@@ -38,6 +39,7 @@ class Game:
         self.time_taken = 0
         self.win = False
         self.engine_sound = pygame.mixer.Sound('audio/fortuner.wav')
+        self.victory_sound = pygame.mixer.Sound('audio/victory.mp3')
 
         start_button_image = pygame.image.load('images/start.png')
         self.start_button = Button(850, 125, start_button_image, 0.4)
@@ -120,8 +122,8 @@ class Game:
     def reset_game(self):
         self.start_game = False
         self.countdown = 3
-        self.player1 = Player(CAR_CONFIGS[self.selected_car], 100, 600, self.screen_width, self.screen_height)
-        self.player2 = Player(CAR_CONFIGS["car2"], 100, 400, self.screen_width, self.screen_height)
+        self.player1 = Player(CAR_CONFIGS[self.selected_car1], 100, 600, self.screen_width, self.screen_height)
+        self.player2 = Player(CAR_CONFIGS[self.selected_car2], 100, 400, self.screen_width, self.screen_height)
         self.player1.reset()
         self.player2.reset()
         self.win = False
@@ -135,6 +137,7 @@ class Game:
             run = True
             self.game_stop = False
             sound_stop = False
+            victory_sounds = False
 
             while run:
                 self.clock.tick(self.FPS)
@@ -150,12 +153,22 @@ class Game:
                         elif self.music_button.rect.collidepoint(pygame.mouse.get_pos()):
                             self.toggle_music()
                         elif self.home_button.rect.collidepoint(pygame.mouse.get_pos()):
+                            self.victory_sound.stop()
+                            pygame.time.wait(800)
+                            pygame.mixer.music.set_volume(0.5)
                             self.run()
                         elif self.fullscreen_button.rect.collidepoint(pygame.mouse.get_pos()):
                             pygame.display.toggle_fullscreen()
                         elif self.selection_button.rect.collidepoint(pygame.mouse.get_pos()):
-                            self.car_selection = not self.car_selection                            
-    
+                            self.car_selection = not self.car_selection
+                    elif event.type == pygame.KEYDOWN:                                    
+                        if event.key == pygame.K_x:
+                            pygame.mixer.music.set_volume(0)
+                        elif event.key == pygame.K_z:
+                            pygame.mixer.music.set_volume(0.5)
+                        elif event.key == pygame.K_f:
+                            pygame.display.toggle_fullscreen()    
+
                 if start_game:
                     if self.countdown > 0:
                         self.screen.fill((0, 0, 0))  
@@ -166,6 +179,7 @@ class Game:
                         pygame.display.flip()  
                         pygame.time.wait(1000)  
                         self.countdown -= 1
+                        
                     else:
                         self.clock.tick(self.FPS)
                         for event in pygame.event.get():
@@ -189,7 +203,9 @@ class Game:
                                 elif event.key == pygame.K_x:
                                     pygame.mixer.music.set_volume(0)
                                 elif event.key == pygame.K_z:
-                                    pygame.mixer.music.set_volume(0.5)
+                                    pygame.mixer.music.set_volume(0.5)        
+                                elif event.key == pygame.K_f:
+                                    pygame.display.toggle_fullscreen()
 
                         if not self.player1.get_distance_traveled() and not self.player2.get_distance_traveled():        
                             self.player1.start_timer()
@@ -239,7 +255,12 @@ class Game:
                             text = font.render(self.time_text, True, (0, 0, 0))
                             self.screen.blit(text, (self.screen_width // 2 - text.get_width() // 2, self.screen_height // 2 + text.get_height() // 2))
                             
+                            pygame.mixer.music.set_volume(0)
                             self.engine_sound.stop()
+                            if not victory_sounds:
+                                        self.victory_sound.play()
+                                        self.victory_sound.set_volume(0.5)
+                                        victory_sounds = True
                             pygame.display.update()
                             pygame.time.delay(1000)
 
@@ -251,16 +272,13 @@ class Game:
                     self.music_button.draw(self.screen)
                     self.fullscreen_button.draw(self.screen)
                     self.selection_button.draw(self.screen)
+                    font = pygame.font.Font("textfont/Minecraft.ttf", 36)
+                    ptext1 = font.render("P1", True, (0, 0, 0))
+                    ptext2 = font.render("P2", True, (0, 0, 0))
 
                     if self.car_selection:
                         self.screen.blit(self.background_img3, (0,0))
                         self.back2_button.draw(self.screen)
-                        for event in pygame.event.get():
-                            if event.type == pygame.QUIT:
-                                run = False
-                            elif event.type == pygame.MOUSEBUTTONDOWN:
-                                if self.back2_button.rect.collidepoint(pygame.mouse.get_pos()):
-                                     self.car_selection = False
                         for i, (car_name, config) in enumerate(CAR_CONFIGS.items()):
                             car_button_image = pygame.image.load(config['image_path'])
                             car_button_image = pygame.transform.scale(car_button_image, (100, 100))
@@ -270,7 +288,15 @@ class Game:
                             button.draw(self.screen)
                         for button, car_name in self.car_buttons:
                             if button.rect.collidepoint(pygame.mouse.get_pos()):
-                                self.selected_car = car_name
+                                self.selected_car1 = car_name
+
+                        self.screen.blit(ptext1, (100, 500))
+                        for event in pygame.event.get():
+                            if event.type == pygame.QUIT:
+                                run = False
+                            elif event.type == pygame.MOUSEBUTTONDOWN:
+                                if self.back2_button.rect.collidepoint(pygame.mouse.get_pos()):
+                                    self.car_selection = False
 
                     if self.show_rules:
                         self.screen.fill((0,0,0))
