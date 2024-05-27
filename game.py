@@ -84,4 +84,4 @@ class Game:
 
         except Exception as e:
             print(e.with_traceback())
-            # print("An error occurred:", str(e))
+            print("An error occurred:", str(e))

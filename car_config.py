@@ -16,9 +16,34 @@ CAR_CONFIGS = {
         "initial_speed": 0,
         "max_speed": 120,
         "acceleration_rate": 0.6
-    }, "car3": {
+    }, 
+    "car3": {
         "car_name": "car3",
-        "image_path": "car/0.png",
+        "image_path": "car/3.png",
+        "scale": 0.4,
+        "initial_speed": 0,
+        "max_speed": 120,
+        "acceleration_rate": 0.6
+    },
+    "car4": {
+        "car_name": "car4",
+        "image_path": "car/4.png",
+        "scale": 0.4,
+        "initial_speed": 0,
+        "max_speed": 120,
+        "acceleration_rate": 0.6
+    },
+    "car5": {
+        "car_name": "car5",
+        "image_path": "car/5.png",
+        "scale": 0.4,
+        "initial_speed": 0,
+        "max_speed": 120,
+        "acceleration_rate": 0.6
+    },
+    "car6": {
+        "car_name": "car6",
+        "image_path": "car/6.png",
         "scale": 0.4,
         "initial_speed": 0,
         "max_speed": 120,
