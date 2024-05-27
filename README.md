@@ -11,16 +11,17 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 
 # Table of Content
 [Introduction Game](#Diesel-Drag-Race) <br>
+[UML Diagram](#Uml-Diagram) <br>
 [Contributing](#Team-Members) <br>
 [Installation Steps](#Installation-Steps) <br>
 [Running the Game with Python](#Run-The-Game) <br>
-[UML Diagram](#Uml-Diagram) <br>
+
 
 ## DIESEL DRAG RACE
 In **"Diesel Drag Race"**, players will engage in exciting, adrenaline-pumping races. At the start of the game, a tense moment comes when the countdown starts before their car is released onto the track. With easy-to-understand controls via special buttons on the keyboard, players will try to accelerate their car as quickly as possible. The race will continue until one of the cars reaches the finish line at a certain distance. With eye-catching graphics and fast-paced racing action, "**Diesel Drag Race**" offers a fun and thrilling gaming experience every time players race their cars on the track.
 
 ## UML Diagram
-[Click here to see the Diagram](https://drive.google.com/file/d/1qCGP1fJolxkQraGsAkIoY_7mq4aSjY4_/view?usp=sharing)
+[Coming Soon](https://i.imgur.com/GkYVclM.png)
 
 ## Team Members
 
