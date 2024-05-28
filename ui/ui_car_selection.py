@@ -14,11 +14,11 @@ class UICarSelection(UIComponent):
         self.font = get_font(36)
         self.background_img = pygame.transform.scale(load_image('garage.jpg', is_color_key=False), (1280, 720))
 
-        self.right_arrow_btn = Button(800, 332, load_image('right_arrow.png', convert_alpha=True), 0.3)
-        self.left_arrow_btn = Button(334, 332, load_image('left_arrow.png', convert_alpha=True), 0.3)
+        self.right_arrow_btn = Button(820, 332, load_image('right_arrow.png', convert_alpha=True), 0.3)
+        self.left_arrow_btn = Button(354, 332, load_image('left_arrow.png', convert_alpha=True), 0.3)
 
-        self.back_btn = Button(520, 600, load_image('back.png', convert_alpha=True), 0.2)
-        self.select_btn = Button(500, 450, load_image('select_car.png', convert_alpha=True), 0.3)
+        self.back_btn = Button(570, 600, load_image('back.png', convert_alpha=True), 0.2)
+        self.select_btn = Button(550, 480, load_image('select_car.png', convert_alpha=True), 0.3)
 
         self.car_img_list = [] 
 
@@ -42,7 +42,7 @@ class UICarSelection(UIComponent):
             self.back_btn.draw(self.screen)
             self.select_btn.draw(self.screen)
 
-            self.screen.blit(self.car_img_list[self.showing_car_index], (432,270))
+            self.screen.blit(self.car_img_list[self.showing_car_index], (482,270))
 
             self.right_arrow_btn.draw(self.screen)
             self.left_arrow_btn.draw(self.screen)

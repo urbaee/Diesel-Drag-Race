@@ -58,7 +58,7 @@ class UIMainMenu(UIComponent):
                     if self.rules_btn.is_clicked():
                         self.ui_rules.render()
                     if self.music_btn.is_clicked():
-                        self.sfx_controller.mute()
+                        self.sfx_controller.set_volume('background', 0)
                     if self.fullscreen_btn.is_clicked():
                         pygame.display.toggle_fullscreen()
                     if self.selection_btn.is_clicked():

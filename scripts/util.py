@@ -15,7 +15,6 @@ def load_image(path, color_key=(0,0,0), convert_alpha=False, is_color_key=True):
 
     return img
 
-
 def load_images(path, is_color_key=True, convert_alpha=False):
     images = []
     

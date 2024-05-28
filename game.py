@@ -33,9 +33,12 @@ class Game:
         self.win = False
 
         self.__sfx_controller = SFXController()
-        self.__sfx_controller.add_sfx('engine', 'fortuner.wav', 0.3)
+        self.__sfx_controller.add_sfx('engine', 'engine.wav', 0.3)
+        self.__sfx_controller.add_sfx('speak', 'victory_speak.mp3', 1)
         self.__sfx_controller.add_sfx('victory', 'victory.mp3', 0.5)
         self.__sfx_controller.add_sfx('background', 'ROTS.mp3', 0.5)
+        self.__sfx_controller.add_sfx('countdown', 'countdown.mp3', 0.6)
+        self.__sfx_controller.add_sfx('go', 'go.mp3', 1)
 
         # default player config
         self.__player1 = Player(CAR_CONFIGS[self.__default_car1], 100, 600, self.screen_width, self.screen_height)

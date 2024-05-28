@@ -93,15 +93,15 @@ class UIGame(UIComponent):
                 pygame.mixer.music.set_volume(0)
                 self.sfx_controller.stop('engine')
                 if not victory_sounds:
-                            self.sfx_controller.play('victory')
                             self.sfx_controller.stop('background')
+                            self.sfx_controller.play('speak')
+                            self.sfx_controller.play('victory')
                             victory_sounds = True
-
             self.handle_event()
 
             pygame.display.update()
             self.game.clock.tick(self.game.FPS)
-
+            
     def check_winner(self):
         if self.player1.get_distance_traveled() >= 2000:
             self.game.game_stop = True
@@ -148,6 +148,7 @@ class UIGame(UIComponent):
         countdown = time
 
         while countdown > 0:
+            self.sfx_controller.play('countdown')
             self.screen.fill((0, 0, 0))  
             font = get_font(100)
             text = font.render(str(countdown), True, (255, 255, 255))
@@ -157,6 +158,8 @@ class UIGame(UIComponent):
             pygame.time.wait(1000)  
             countdown -= 1
         
+        self.sfx_controller.play('go')
+
     def handle_event(self):
         sound_stop = False
         for event in pygame.event.get():
@@ -170,6 +173,9 @@ class UIGame(UIComponent):
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    self.sfx_controller.stop('engine')
+                    self.sfx_controller.stop('victory')
+                    self.sfx_controller.stop('speak')
                     self.is_active = False
                 if event.key == pygame.K_UP:
                     self.player1.accelerate()
