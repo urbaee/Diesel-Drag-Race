@@ -12,7 +12,7 @@ class UICarSelection(UIComponent):
         self.game = game
         self.screen: pygame.Surface = self.game.get_screen()
         self.font = get_font(36)
-        self.background_img = load_image('bgfortuner3.png', is_color_key=False)
+        self.background_img = load_image('bgfortuner.png', is_color_key=False)
 
         self.right_arrow_btn = Button(800, 332, load_image('right_arrow.png', convert_alpha=True), 0.3)
         self.left_arrow_btn = Button(334, 332, load_image('right_arrow.png', convert_alpha=True), 0.3)

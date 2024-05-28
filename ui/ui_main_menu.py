@@ -23,7 +23,7 @@ class UIMainMenu(UIComponent):
         self.selection_btn = Button(50, 250, load_image('back.png',convert_alpha=True), 0.2)
         self.bg_color = (144, 201, 120)
 
-        self.sfx_contoller: SFXController = self.game.get_sfxcontroller()
+        self.sfx_controller: SFXController = self.game.get_sfxcontroller()
 
         self.ui_car_info = UICarInfo(self.game)
         self.ui_game = UIGame(self.game)
@@ -31,7 +31,7 @@ class UIMainMenu(UIComponent):
 
     def render(self):
         self.is_active = True
-        self.sfx_contoller.play('background', loop=True)
+        self.sfx_controller.play('background', loop=True)
 
         while self.is_active:
             self.screen.fill(self.bg_color)
@@ -58,7 +58,7 @@ class UIMainMenu(UIComponent):
                     if self.rules_btn.is_clicked():
                         self.ui_rules.render()
                     if self.music_btn.is_clicked():
-                        self.sfx_contoller.mute()
+                        self.sfx_controller.mute()
                     if self.fullscreen_btn.is_clicked():
                         pygame.display.toggle_fullscreen()
                     if self.selection_btn.is_clicked():
@@ -66,8 +66,10 @@ class UIMainMenu(UIComponent):
                     
             if event.type == pygame.KEYDOWN:                                    
                 if event.key == pygame.K_x:
-                    pygame.mixer.music.set_volume(0)
+                    self.sfx_controller.set_volume('background', 0)
                 if event.key == pygame.K_z:
-                    pygame.mixer.music.set_volume(0.5)
+                    self.sfx_controller.set_volume('background', 0.5)   
                 if event.key == pygame.K_f:
                     pygame.display.toggle_fullscreen()   
+                if event.key == pygame.K_ESCAPE:
+                    quit_game()    

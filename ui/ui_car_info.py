@@ -12,7 +12,7 @@ class UICarInfo(UIComponent):
         self.game = game
         self.screen: pygame.Surface = self.game.get_screen()
         self.font = get_font(36)
-        self.background_img = load_image('bgfortuner3.png', is_color_key=False)
+        self.background_img = load_image('bgfortuner.png', is_color_key=False)
 
         self.back2_button = Button(520, 550, load_image('back.png', convert_alpha=True), 0.2)
 
