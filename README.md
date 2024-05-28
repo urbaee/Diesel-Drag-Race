@@ -21,16 +21,16 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 In **"Diesel Drag Race"**, players will engage in exciting, adrenaline-pumping races. At the start of the game, a tense moment comes when the countdown starts before their car is released onto the track. With easy-to-understand controls via special buttons on the keyboard, players will try to accelerate their car as quickly as possible. The race will continue until one of the cars reaches the finish line at a certain distance. With eye-catching graphics and fast-paced racing action, "**Diesel Drag Race**" offers a fun and thrilling gaming experience every time players race their cars on the track.
 
 ## UML Diagram
-[Click Here to See the UML Diagram](https://imgur.com/KpbRl4e)
+[Click Here to See the UML Diagram](https://i.imgur.com/KpbRl4e.jpeg)
 
 ## Team Members
 
 |   **NAMA**|**NIM**   | **KONTRIBUSI**  |**GITHUB**|
 | ------------ | ------------ | ------------ | ------------ | 
-|  Dinda Joycehana | 122140048  | Programmer, UML Design  | [@dindajoycehana](https://github.com/dindajoycehana)|
-|  Fathan Andi Kartagama | 122140055   |Programmer    |[@pataanggs](https://github.com/pataanggs)|
+| Dinda Joycehana | 122140048  | Programmer, UML Design  | [@dindajoycehana](https://github.com/dindajoycehana)|
+| Fathan Andi Kartagama | 122140055   |Programmer    |[@pataanggs](https://github.com/pataanggs)|
 | Hagai Kopusi Sinulingga  | 122140059  | Programmer, 2D Artist  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
-|Rahmat Aldi Nasda | 122140079 | Programmer|  [@urbaee](https://github.com/urbaee)|
+| Rahmat Aldi Nasda | 122140079 | Programmer|  [@urbaee](https://github.com/urbaee)|
 | Chandra Budi Wijaya  | 122140093  | Project Leader, Programmer  | [@ChandraBudiWijaya](https://github.com/ChandraBudiWijaya)|
 
 ## Installation Steps
