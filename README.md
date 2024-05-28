@@ -68,11 +68,9 @@ Alternative command:
 ```
 python main.py
 ```
-**For Windows Users:**
-```
+**Running The Exe:**
 1. Download the zip file from the [GitHub Releases](https://github.com/urbaee/Diesel-Drag-Race/releases).
 2. Extract the contents of the zip file to a desired location on your computer.
 3. Navigate to the extracted folder.
 4. Double-click on the `main.exe` file to run the game.
 Note: Make sure you have the necessary dependencies installed on your system.
-```
