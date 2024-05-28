@@ -12,7 +12,7 @@ CAR_CONFIGS = {
     "car2": {
         "car_name": "car2",
         "image_path": "car/1.png",
-        "scale": 0.4,
+        "scale": 0.35,
         "initial_speed": 0,
         "max_speed": 120,
         "acceleration_rate": 0.3
