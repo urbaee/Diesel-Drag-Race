@@ -25,10 +25,11 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 ## UML Diagram
 <div align="center">
 <img src="images/UML.jpg" style="width: 320px;"/>
-<p>**Here is the UML Diagram**</p>
+<p>Here is the UML Diagram</p>
 </div>
 
 ## Team Members
+<div align="center">
 
 |   **NAMA**|**NIM**   | **KONTRIBUSI**  |**GITHUB**|
 | ------------ | ------------ | ------------ | ------------ | 
@@ -37,6 +38,8 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 | Hagai Kopusi Sinulingga  | 122140059  | Programmer, 2D Artist  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
 | Rahmat Aldi Nasda | 122140079 | Programmer|  [@urbaee](https://github.com/urbaee)|
 | Chandra Budi Wijaya  | 122140093  | Project Leader, Programmer  | [@ChandraBudiWijaya](https://github.com/ChandraBudiWijaya)|
+
+</div>
 
 ## Installation Steps
 <li> Install Python 3.12 or higher</li>
