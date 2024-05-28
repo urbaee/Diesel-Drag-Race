@@ -27,10 +27,10 @@ In **"Diesel Drag Race"**, players will engage in exciting, adrenaline-pumping r
 
 |   **NAMA**|**NIM**   | **KONTRIBUSI**  |**ID**|
 | ------------ | ------------ | ------------ | ------------ | 
-|  Dinda Joycehana | 122140048  | Programmer, UML Design  | [@dindajoycehana](https://github.com/dindajoycehana)|
-|  Fathan Andi Kartagama | 122140055   |Programmer    |[@pataanggs](https://github.com/pataanggs)|
-| Hagai Kopusi Sinulingga  | 122140059  | Programmer, 2D Artist  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
-|Rahmat Aldi Nasda | 122140079 | Programmer|  [@urbaee](https://github.com/urbaee)|
+|  Dinda Joycehana | 122140048  | Programmer, UML Designer  | [@dindajoycehana](https://github.com/dindajoycehana)|
+|  Fathan Andi Kartagama | 122140055   |Programmer, Project Handler   |[@pataanggs](https://github.com/pataanggs)|
+| Hagai Kopusi Sinulingga  | 122140059  | Programmer, UML Designer  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
+|Rahmat Aldi Nasda | 122140079 | Programmer, 2D Artist   |  [@urbaee](https://github.com/urbaee)|
 | Chandra Budi Wijaya  | 122140093  | Project Leader, Programmer  | [@ChandraBudiWijaya](https://github.com/ChandraBudiWijaya)|
 
 ## Installation Steps
