@@ -181,9 +181,9 @@ class UIGame(UIComponent):
                     if not sound_stop:
                         self.sfx_controller.play('engine')
                         sound_stop = True
-                # if event.key == pygame.K_x:
-                #     pygame.mixer.music.set_volume(0)
-                # if event.key == pygame.K_z:
-                #     pygame.mixer.music.set_volume(0.5)        
-                # if event.key == pygame.K_f:
-                #     pygame.display.toggle_fullscreen()
+                if event.key == pygame.K_x:
+                    self.sfx_controller.set_volume('background', 0)
+                if event.key == pygame.K_z:
+                    self.sfx_controller.set_volume('background', 0.5)        
+                if event.key == pygame.K_f:
+                    pygame.display.toggle_fullscreen()

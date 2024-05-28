@@ -55,17 +55,10 @@ class UIMainMenu(UIComponent):
                     if self.start_btn.is_clicked():
                         player = self.game.get_player()
                         self.ui_game.render(player[0], player[1])
-                        # self.reset_game()
-                        # start_game = True
                     if self.rules_btn.is_clicked():
                         self.ui_rules.render()
                     if self.music_btn.is_clicked():
                         self.sfx_contoller.mute()
-                    # if self.home_btn.is_clicked():
-                        # self.victory_sound.stop()
-                        # pygame.time.wait(800)
-                        # pygame.mixer.music.set_volume(0.5)
-                        # self.run()
                     if self.fullscreen_btn.is_clicked():
                         pygame.display.toggle_fullscreen()
                     if self.selection_btn.is_clicked():
