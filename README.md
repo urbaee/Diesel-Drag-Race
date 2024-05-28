@@ -58,6 +58,8 @@ sudo apt-get install python3-pygame
 ```
 
 ## Run The Game
+**Running Via Visual Studio Code**
+
 Run the following command to start the game:
 ```
 python3 main.py
@@ -65,4 +67,12 @@ python3 main.py
 Alternative command:
 ```
 python main.py
+```
+**For Windows Users:**
+```
+1. Download the zip file from the [GitHub Releases](https://github.com/urbaee/Diesel-Drag-Race/releases).
+2. Extract the contents of the zip file to a desired location on your computer.
+3. Navigate to the extracted folder.
+4. Double-click on the `main.exe` file to run the game.
+Note: Make sure you have the necessary dependencies installed on your system.
 ```
