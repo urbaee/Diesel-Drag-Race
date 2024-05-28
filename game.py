@@ -17,6 +17,8 @@ class Game:
         pygame.display.set_icon(icon_img)
         self.__screen = pygame.display.set_mode((self.screen_width, self.screen_height))
         pygame.display.set_caption('DIESEL DRAG RACE')
+        pygame_icon = pygame.image.load('images/LogoFix.png')
+        pygame.display.set_icon(pygame_icon)
         self.clock = pygame.time.Clock()
 
         self.FPS = 60
