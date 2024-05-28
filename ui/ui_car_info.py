@@ -12,12 +12,12 @@ class UICarInfo(UIComponent):
         self.game = game
         self.screen: pygame.Surface = self.game.get_screen()
         self.font = get_font(36)
-        self.background_img = load_image('bgfortuner.png', is_color_key=False)
+        self.background_img = pygame.transform.scale(load_image('garage.jpg', is_color_key=False), (1280, 720))
 
         self.back2_button = Button(520, 550, load_image('back.png', convert_alpha=True), 0.2)
 
-        self.select_car1_button = Button(323, 444, load_image('back.png', convert_alpha=True), 0.2)
-        self.select_car2_button = Button(664, 444, load_image('back.png', convert_alpha=True), 0.2)
+        self.select_car1_button = Button(323, 444, load_image('p1.png', convert_alpha=True), 0.3)
+        self.select_car2_button = Button(664, 444, load_image('p2.png', convert_alpha=True), 0.3)
 
         self.ui_car_selection = UICarSelection(self.game)
         
