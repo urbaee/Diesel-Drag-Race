@@ -19,13 +19,13 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 
 ## DIESEL DRAG RACE
 <div align="justify">
-<h1>In **"Diesel Drag Race"**, players will engage in exciting, adrenaline-pumping races. At the start of the game, a tense moment comes when the countdown starts before their car is released onto the track. With easy-to-understand controls via special buttons on the keyboard, players will try to accelerate their car as quickly as possible. The race will continue until one of the cars reaches the finish line at a certain distance. With eye-catching graphics and fast-paced racing action, "**Diesel Drag Race**" offers a fun and thrilling gaming experience every time players race their cars on the track.</h1>
+<p>In Diesel Drag Race, players will engage in exciting, adrenaline-pumping races. At the start of the game, a tense moment comes when the countdown starts before their car is released onto the track. With easy-to-understand controls via special buttons on the keyboard, players will try to accelerate their car as quickly as possible. The race will continue until one of the cars reaches the finish line at a certain distance. With eye-catching graphics and fast-paced racing action, Diesel Drag Race offers a fun and thrilling gaming experience every time players race their cars on the track.</p>
 </div>
 
 ## UML Diagram
 <div align="center">
 <img src="images/UML.jpg" style="width: 320px;"/>
-<h1>**Here is the UML Diagram**</h1>
+<p>**Here is the UML Diagram**</p>
 </div>
 
 ## Team Members
