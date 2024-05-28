@@ -20,7 +20,7 @@ class UIMainMenu(UIComponent):
         self.back_btn = Button(50, 600, load_image('back.png',convert_alpha=True), 0.2)
         self.home_btn = Button(520, 520, load_image('back.png',convert_alpha=True), 0.3)
         self.fullscreen_btn = Button(50, 120, load_image('fullscreen.png',convert_alpha=True), 0.2)
-        self.selection_btn = Button(50, 250, load_image('back.png',convert_alpha=True), 0.2)
+        self.selection_btn = Button(50, 250, load_image('car_select.png',convert_alpha=True), 0.23)
         self.bg_color = (144, 201, 120)
 
         self.sfx_controller: SFXController = self.game.get_sfxcontroller()

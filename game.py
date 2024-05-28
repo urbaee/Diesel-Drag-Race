@@ -2,10 +2,7 @@
 
 import pygame
 from player import Player
-from button import Button
 from car_config import CAR_CONFIGS
-import time
-
 from sfx import SFXController
 from ui.ui_main_menu import UIMainMenu
 
@@ -16,10 +13,10 @@ class Game:
 
         self.screen_width = 1280
         self.screen_height = 720
+        icon_img = pygame.image.load('images/icon.png')
+        pygame.display.set_icon(icon_img)
         self.__screen = pygame.display.set_mode((self.screen_width, self.screen_height))
         pygame.display.set_caption('DIESEL DRAG RACE')
-        pygame_icon = pygame.image.load('images/LogoFix.png')
-        pygame.display.set_icon(pygame_icon)
         self.clock = pygame.time.Clock()
 
         self.FPS = 60
@@ -79,11 +76,7 @@ class Game:
 
     def run(self):
         try:
-            run = True
-
-            while run:
-                self.ui_main_menu.render()
-
+            self.ui_main_menu.render()
         except Exception as e:
             print(e.with_traceback())
             print("An error occurred:", str(e))
