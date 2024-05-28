@@ -1,5 +1,5 @@
 <div align="center">
-<img src="images/LogoFix.png" style="width: 320px;"/>
+<img src="images/icon.png" style="width: 320px;"/>
 <h1> Diesel Drag Race by RB-03 </h1>
 
 Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
