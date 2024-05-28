@@ -33,9 +33,9 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 
 |   **NAMA**|**NIM**   | **KONTRIBUSI**  |**GITHUB**|
 | ------------ | ------------ | ------------ | ------------ | 
-| Dinda Joycehana | 122140048  | Programmer, UML Design  | [@dindajoycehana](https://github.com/dindajoycehana)|
+| Dinda Joycehana | 122140048  | Programmer, UML Designer  | [@dindajoycehana](https://github.com/dindajoycehana)|
 | Fathan Andi Kartagama | 122140055   |Programmer, Project Handler    |[@pataanggs](https://github.com/pataanggs)|
-| Hagai Kopusi Sinulingga  | 122140059  | Programmer, UML Desig  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
+| Hagai Kopusi Sinulingga  | 122140059  | Programmer, UML Designer  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
 | Rahmat Aldi Nasda | 122140079 | Programmer, 2D Artist|  [@urbaee](https://github.com/urbaee)|
 | Chandra Budi Wijaya  | 122140093  | Project Leader, Programmer  | [@ChandraBudiWijaya](https://github.com/ChandraBudiWijaya)|
 
