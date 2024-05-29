@@ -22,7 +22,7 @@ class UIGame(UIComponent):
         self.font = get_font(36)
         
         # Load the background image for the game and scale it
-        self.background_img = pygame.transform.scale(load_image('backgroundgame2.jpg', is_color_key=False), (1280, 720))
+        self.background_img = pygame.transform.scale(load_image('backgroundgame.jpg', is_color_key=False), (1280, 720))
         
         # Initialize various buttons for UI interaction
         self.start_btn = Button(850, 125, load_image('start.png', convert_alpha=True), 0.4)

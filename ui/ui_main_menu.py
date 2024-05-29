@@ -21,7 +21,7 @@ class UIMainMenu(UIComponent):
         self.font = get_font(36)
         
         # Load the background image for the main menu
-        self.background_img = load_image('bgfortuner3.png', is_color_key=False)
+        self.background_img = load_image('bgfortuner.png', is_color_key=False)
         
         # Initialize buttons for various functionalities
         self.start_btn = Button(850, 125, load_image('start.png', convert_alpha=True), 0.4)
