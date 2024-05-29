@@ -48,3 +48,16 @@ class SFXController:
             for sfx_name, _ in self.__sfx_list.items():
                     self.set_volume(sfx_name, 0, set_last_vol=False)
             self.muted = True
+
+    def mute(self, sfx_name):
+        if sfx_name in self.__sfx_list:
+            self.set_volume(sfx_name, 0, set_last_vol=False)
+        else:
+            raise Exception(f"{sfx_name} does not exist in sfx list!")
+
+    def unmute(self, sfx_name):
+        if sfx_name in self.__sfx_list:
+            self.set_volume(sfx_name, self.__last_sfx_vol[sfx_name])
+        else:
+            raise Exception(f"{sfx_name} does not exist in sfx list!")
+        

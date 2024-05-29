@@ -77,6 +77,13 @@ class Game:
         self.background_img_x = 0
         self.game_stop = False
 
+    def toggle_music(self):
+        if self.music_muted:
+            self.__sfx_controller.mute('background')
+        else:
+            self.__sfx_controller.unmute('background')
+        self.music_muted = not self.music_muted    
+
     def run(self):
         try:
             self.ui_main_menu.render()
