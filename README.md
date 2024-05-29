@@ -10,28 +10,36 @@ Diesel Drag Race: The Exciting Pixel Art Racing Game created by RB-03.
 </div>
 
 # Table of Content
-[Introduction Game](#Diesel-Drag-Race) <br>
+[Introduction of The Game](#Diesel-Drag-Race) <br>
 [UML Diagram](#Uml-Diagram) <br>
-[Contributing](#Team-Members) <br>
+[Contributors](#Team-Members) <br>
 [Installation Steps](#Installation-Steps) <br>
 [Running the Game with Python](#Run-The-Game) <br>
 
 
 ## DIESEL DRAG RACE
-In **"Diesel Drag Race"**, players will engage in exciting, adrenaline-pumping races. At the start of the game, a tense moment comes when the countdown starts before their car is released onto the track. With easy-to-understand controls via special buttons on the keyboard, players will try to accelerate their car as quickly as possible. The race will continue until one of the cars reaches the finish line at a certain distance. With eye-catching graphics and fast-paced racing action, "**Diesel Drag Race**" offers a fun and thrilling gaming experience every time players race their cars on the track.
+<div align="justify">
+<p>In Diesel Drag Race, players will engage in exciting, adrenaline-pumping races. At the start of the game, a tense moment comes when the countdown starts before their car is released onto the track. With easy-to-understand controls via special buttons on the keyboard, players will try to accelerate their car as quickly as possible. The race will continue until one of the cars reaches the finish line at a certain distance. With eye-catching graphics and fast-paced racing action, Diesel Drag Race offers a fun and thrilling gaming experience every time players race their cars on the track.</p>
+</div>
 
 ## UML Diagram
-[Coming Soon](https://i.imgur.com/GkYVclM.png)
+<div align="center">
+<img src="images/UML.jpg" style="width: 320px;"/>
+<p>Here is the UML Diagram</p>
+</div>
 
 ## Team Members
+<div align="center">
 
-|   **NAMA**|**NIM**   | **KONTRIBUSI**  |**ID**|
+|   **NAMA**|**NIM**   | **KONTRIBUSI**  |**GITHUB**|
 | ------------ | ------------ | ------------ | ------------ | 
-|  Dinda Joycehana | 122140048  | Programmer, UML Designer  | [@dindajoycehana](https://github.com/dindajoycehana)|
-|  Fathan Andi Kartagama | 122140055   |Programmer, Project Handler   |[@pataanggs](https://github.com/pataanggs)|
+| Dinda Joycehana | 122140048  | Programmer, UML Designer  | [@dindajoycehana](https://github.com/dindajoycehana)|
+| Fathan Andi Kartagama | 122140055   |Programmer, Project Handler    |[@pataanggs](https://github.com/pataanggs)|
 | Hagai Kopusi Sinulingga  | 122140059  | Programmer, UML Designer  |[@Hagaikopusi](https://github.com/Hagaikopusi)|
-|Rahmat Aldi Nasda | 122140079 | Programmer, 2D Artist   |  [@urbaee](https://github.com/urbaee)|
+| Rahmat Aldi Nasda | 122140079 | Programmer, 2D Artist|  [@urbaee](https://github.com/urbaee)|
 | Chandra Budi Wijaya  | 122140093  | Project Leader, Programmer  | [@ChandraBudiWijaya](https://github.com/ChandraBudiWijaya)|
+
+</div>
 
 ## Installation Steps
 <li> Install Python 3.12 or higher</li>
@@ -73,4 +81,5 @@ python main.py
 2. Extract the contents of the zip file to a desired location on your computer.
 3. Navigate to the extracted folder.
 4. Double-click on the `main.exe` file to run the game.
+
 Note: Make sure you have the necessary dependencies installed on your system.
