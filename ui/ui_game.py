@@ -6,7 +6,6 @@ from player import Player
 from scripts.util import get_font, load_image, quit_game
 from sfx import SFXController
 from ui.ui import UIComponent
-from ui.ui_car_info import UICarInfo
 
 # Implementation of Game Option as a UIComponent
 class UIGame(UIComponent):
@@ -24,13 +23,8 @@ class UIGame(UIComponent):
         # Load the background image for the game and scale it
         self.background_img = pygame.transform.scale(load_image('backgroundgame.jpg', is_color_key=False), (1280, 720))
         
-        # Initialize various buttons for UI interaction
-        self.start_btn = Button(850, 125, load_image('start.png', convert_alpha=True), 0.4)
-        self.rules_btn = Button(850, 325, load_image('help.png', convert_alpha=True), 0.4)
-        self.music_btn = Button(50, 50, load_image('music.png', convert_alpha=True), 0.2)
+        # Initialize button for UI interaction
         self.home_btn = Button(520, 520, load_image('back.png', convert_alpha=True), 0.3)
-        self.fullscreen_btn = Button(50, 120, load_image('fullscreen.png', convert_alpha=True), 0.2)
-        self.selection_btn = Button(50, 250, load_image('back.png', convert_alpha=True), 0.2)
         
         # Set the background color
         self.bg_color = (144, 201, 120)
