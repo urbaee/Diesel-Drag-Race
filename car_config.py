@@ -1,4 +1,15 @@
 # car_config.py
+"""
+Configuration settings for the cars used in the game.
+
+Each car has the following attributes:
+- car_name: Name of the car.
+- image_path: Path to the car's image file.
+- scale: Scale factor for resizing the car's image.
+- initial_speed: Starting speed of the car.
+- max_speed: Maximum speed the car can achieve.
+- acceleration_rate: Rate at which the car accelerates.
+"""
 
 CAR_CONFIGS = {
     "car1": {
