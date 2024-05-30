@@ -12,12 +12,6 @@ class UIRules(UIComponent):
         self.font = get_font(36)  # Load the font with size 36
         self.background_img = load_image('bgfortuner.png', is_color_key=False)  # Load the background image
 
-        # Initialize various buttons used in the UI
-        self.back2_button = Button(520, 550, load_image('back.png', convert_alpha=True), 0.2)
-        self.select_car1_button = Button(323, 444, load_image('back.png', convert_alpha=True), 0.2)
-        self.select_car2_button = Button(664, 444, load_image('back.png', convert_alpha=True), 0.2)
-        self.back_btn = Button(50, 600, load_image('back.png', convert_alpha=True), 0.2)
-
         self.bg_color = (144, 201, 120)  # Set the background color
 
         # Define the rules text
