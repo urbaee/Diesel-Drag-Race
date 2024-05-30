@@ -11,7 +11,8 @@ class UIRules(UIComponent):
         self.screen = self.game.get_screen()  # Get the main screen surface
         self.font = get_font(36)  # Load the font with size 36
         self.background_img = load_image('bgfortuner.png', is_color_key=False)  # Load the background image
-
+        self.back_btn = Button(50, 600, load_image('back.png',convert_alpha=True), 0.2)
+        
         self.bg_color = (144, 201, 120)  # Set the background color
 
         # Define the rules text
